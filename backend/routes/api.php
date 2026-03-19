@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Saler\SalerController;
 use App\Http\Controllers\TestContoller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -15,10 +16,10 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 // Route::get('/profile', [UserController::class, 'profile'])->middleware('auth:sanctum');    
 Route::middleware('auth:sanctum')->group(function () {
-    Route::get('/profile', [AuthController::class, 'profile']);
     Route::post('/logout', [AuthController::class, 'logout']);
+    Route::get('/verifyProfile',[AuthController::class,'verifyProfile']);
 });
-Route::middleware(['auth:sanctum', 'role:admin'])->group(function () {
+// Route::middleware(['auth:sanctum', 'role:admin'])->group(function () {
 
-    Route::get('/adminProfile', [AdminController::class, 'profile']);
-});
+//     Route::get('/adminProfile', [AdminController::class, 'profile']);
+// });

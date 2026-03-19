@@ -54,4 +54,8 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+    //  public function rolle(){
+    //     return $this->belongsTo(Rolles::class,'rolle_id');
+    // }
+    
 }

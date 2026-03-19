@@ -19,13 +19,18 @@ class RolePermissionSeeder extends Seeder
         // Create roles safely
         $admin = Role::firstOrCreate(['name' => 'admin']);
         $userRole = Role::firstOrCreate(['name' => 'user']);
+        $salerRole = Role::FirstOrCreate(['name'=>'saler']);
 
         // Give permission to admin
         $admin->givePermissionTo('create post');
 
         // Find first user
         $user = User::where('email', 'admin@example.com')->first();
-         
+        $saler = User::where('email','saler@example.com')->first();
+         if($saler){
+            $saler->update(['role'=>'saler']);
+            $saler->assignRole('saler');
+         }
         if ($user) {
             $user->assignRole('admin');
         }
